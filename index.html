@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Ulang Tahun, Mas!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.pinimg.com/originals/19/1a/10/191a10f79b1424f0617f48f2cba49cb5.gif') no-repeat center center;
+      background-size: cover;
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 40px;
+      text-align: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 700px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ffdddd;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.8;
+    }
+
+    .heart {
+      font-size: 3em;
+      color: red;
+      margin-top: 25px;
+      cursor: pointer;
+      animation: beat 1s infinite alternate;
+    }
+
+    @keyframes beat {
+      from { transform: scale(1); }
+      to { transform: scale(1.2); }
+    }
+
+    .emoji {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+
+    .music-btn {
+      margin-top: 30px;
+      padding: 10px 25px;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      margin-top: 15px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    /* Responsif untuk layar kecil */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .music-btn {
+        font-size: 0.9em;
+      }
+
+      .heart {
+        font-size: 2.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <!-- Slide 1 -->
+  <div class="slide" id="slide1">
+    <div class="card">
+      <h1>Selamat Ulang Tahun, Masss 🎂</h1>
+      <p> Semoga semua hal baik yang kamu doakan hari ini, pelan-pelan jadi nyata.  
+Terima kasih sudah jadi sosok yang selalu ada,  
+yang sabar, yang hangat, dan yang nggak pernah lelah mencintai.  
+Semoga langkahmu ke depan selalu dimudahkan,  
+dan semoga aku bisa terus jadi bagian dari perjalananmu ASEKK, Aku sayang mass."
+ 
+      </p>
+      <p>
+        Aku berdoa kamu selalu sehat, sukses,lancar rezekinya dan dikelilingi orang-orang yang tulus. Tapi yang paling penting, semoga
+        aku bisa terus jadi bagian dari kebahagiaanmu, setiap tahun, setiap ulang tahun. 💖
+      </p>
+      <button class="music-btn" onclick="playMusic()">Putar Musik 🎶</button>
+      <div class="heart" onclick="nextSlide()">❤️</div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide hidden" id="slide2">
+    <div class="card">
+      <h1>Bonus Slide Spesial 😜</h1>
+      <p>
+        Karena kamu udah keren, ganteng, manja, ngeselin, dan lucu dalam satu paket aw <br>
+        Maka hadiahku hari ini adalah: <br><br>
+        1 pelukan virtual 🤗 <br>
+        1 cium pipi kiri 😘 <br>
+        1 cium pipi kanan 😚 <br>
+    
+        DIH ALAY BGT YAH HAHAHA
+      </p>
+      <div class="emoji">💘💞💓💋😎</div>
+      <div class="heart" onclick="nextSlide()">❤️</div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide hidden" id="slide3">
+    <div class="card">
+      <h1>Slide Rahasia 🔒</h1>
+      <p>Masukin password dulu ya 😘</p>
+      <input type="password" id="secretPass" placeholder="Masukkan password">
+      <button class="music-btn" onclick="checkPassword()">Buka Rahasia 💌</button>
+      <p id="wrongPass" style="color: pink; margin-top: 10px;"></p>
+    </div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide hidden" id="slide4">
+    <div class="card">
+      <h1>💖 RAHASIA NEGARA💖</h1>
+      <p>
+        Kamu adalah orang yang aku doain tiap malam <br>
+        Dan yang selalu aku harap jadi bagian dari masa depanku 💍
+      </p>
+      <p>Kenangan kecil kita:</p>
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+        <img src="https://ibb.co.com/qY389zsC" width="100" style="border-radius: 10px;">
+        <img src="https://ibb.co.com/39bFBT2W" width="100" style="border-radius:10px;">
+        <img src="https://ibb.co.com/39bFBT2W" width="100" style="border-radius: 10px;">
+      </div>
+      <p style="margin-top: 20px;">Terima kasih sudah jadi rumah buat hatiku 💗</p>
+      <div class="heart" onclick="backToStart()">❤️</div>
+    </div>
+  </div>
+
+  <audio id="bgMusic" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
+
+  <script>
+    function playMusic() {
+      var music = document.getElementById("bgMusic");
+      music.play();
+    }
+
+    function nextSlide() {
+      if (!document.getElementById("slide1").classList.contains("hidden")) {
+        document.getElementById("slide1").classList.add("hidden");
+        document.getElementById("slide2").classList.remove("hidden");
+      } else if (!document.getElementById("slide2").classList.contains("hidden")) {
+        document.getElementById("slide2").classList.add("hidden");
+        document.getElementById("slide3").classList.remove("hidden");
+      } else if (!document.getElementById("slide3").classList.contains("hidden")) {
+        document.getElementById("slide3").classList.add("hidden");
+        document.getElementById("slide4").classList.remove("hidden");
+      }
+    }
+
+    function backToStart() {
+      document.getElementById("slide4").classList.add("hidden");
+      document.getElementById("slide1").classList.remove("hidden");
+    }
+
+    function checkPassword() {
+      const input = document.getElementById("secretPass").value;
+      const errorMsg = document.getElementById("wrongPass");
+
+      if (input === "cintakamu123") {
+        document.getElementById("slide3").classList.add("hidden");
+        document.getElementById("slide4").classList.remove("hidden");
+        errorMsg.textContent = "";
+      } else {
+        errorMsg.textContent = "Eh salah password, coba lagi yaa~ 🙈";
+      }
+    }
+  </script>
+
+</body>
+</html>
